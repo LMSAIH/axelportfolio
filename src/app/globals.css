@@ -2,20 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  @apply bg-zinc-950 w-full h-full p-10;
 }
+
+.content {
+  @apply w-full h-full flex flex-row;
+}
+
+nav {
+  @apply order-2 bg-slate-700 w-1/6 fixed right-10 top-10 h-5/6 flex justify-center;
+}
+
+.left {
+  @apply order-1 bg-emerald-950 w-5/6;
+}
+
+.navbar {
+  @apply w-full flex justify-center flex-col;
+}
+
+.navbar .linkContainer {
+  @apply flex justify-center flex-col;
+}
+
+.clickableContainer {
+  @apply flex justify-center w-full;
+}
+
+.dotContainer {
+  @apply w-full flex justify-center;
+}
+
+.navbar .dot {
+  @apply bg-white w-8 h-8 rounded-full mt-4;
+}
+
+.connectorContainer
+{
+  @apply w-full min-h-14 mt-1 flex justify-center;
+}
+
+.connector
+{
+
+  @apply w-2 border-dotted border-8 ;
+}
+
