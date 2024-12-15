@@ -19,6 +19,7 @@ const NavBar = () => {
                 <div className="connectorContainer">
                     <span className="connector"></span>
                 </div>
+                
 
                 <div className="linkContainer">
                     <div className="clickableContainer">
