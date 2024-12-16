@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 body {
-  @apply bg-zinc-950 w-full h-full p-10;
+  @apply bg-zinc-950 w-full h-full pl-10 pt-10 pb-10 pr-0;
 }
 
 .content {
@@ -11,23 +13,31 @@ body {
 }
 
 nav {
-  @apply order-2 bg-slate-700 w-1/6 fixed right-10 top-10 h-5/6 flex justify-center;
+  @apply order-2 w-1/6 fixed right-0 top-0 flex justify-center h-screen;
 }
 
-.left {
-  @apply order-1 bg-emerald-950 w-5/6;
+main{
+
+  @apply order-1 w-5/6;
 }
 
+.left{
+  @apply w-full h-full;
+}
 .navbar {
-  @apply w-full flex justify-center flex-col;
+  @apply w-full flex justify-center flex-col mr-0;
 }
 
 .navbar .linkContainer {
   @apply flex justify-center flex-col;
 }
 
-.clickableContainer {
-  @apply flex justify-center w-full;
+.clickableContainer{
+  @apply w-full flex justify-center;
+}
+
+.clickableContainer>div {
+  @apply  w-fit;
 }
 
 .dotContainer {
@@ -35,17 +45,30 @@ nav {
 }
 
 .navbar .dot {
-  @apply bg-white w-8 h-8 rounded-full mt-4;
+  @apply w-8 h-8 rounded-full mt-1 m-0 border-solid border-2;
 }
 
 .connectorContainer
 {
-  @apply w-full min-h-14 mt-1 flex justify-center;
+  @apply w-full min-h-14 mt-1 flex justify-center m-0;
 }
 
 .connector
 {
-
-  @apply w-2 border-dotted border-8 ;
+  @apply w-2 border-dotted border-8 m-0 border-l-0;
 }
 
+.experience
+{
+  @apply text-white font-extralight drop-shadow-[0px_0px_7px_rgba(255,255,255,0.8)];
+}
+
+.content{
+  @apply w-full h-lvh;
+}
+
+.introduction, .experience, .projects, .skills, .contact
+{
+  width: 100%;
+  height:40vw;
+}
