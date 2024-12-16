@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Dots from "./Dots";
+import DotConnector from "./DotConnector";
 
 const NavBar = () => {
     return (
@@ -6,29 +7,24 @@ const NavBar = () => {
         <nav>
             <div className="navbar">
 
-                <div className="linkContainer">
-                    <div className="clickableContainer">
-                        <Link href="/" className="experience"> Experience </Link>
-                    </div>
-                    <div className="dotContainer">
-                        <div className="dot"></div>
-                    </div>
+                <Dots name={"Introduction"} targetRef={"introduction"} />
 
-                </div>
+                <DotConnector />
 
-                <div className="connectorContainer">
-                    <span className="connector"></span>
-                </div>
-                
+                <Dots name={"Projects"} targetRef={"projects"}/>
 
-                <div className="linkContainer">
-                    <div className="clickableContainer">
-                        <Link href="/" className="experience"> Experience </Link>
-                    </div>
-                    <div className="dotContainer">
-                        <div className="dot"></div>
-                    </div>
-                </div>
+                <DotConnector />
+
+                <Dots name={"Skills"} targetRef={"skills"} />
+
+                <DotConnector />
+
+                <Dots name={"Experience"} targetRef={"experience"}/>
+
+                <DotConnector />
+
+                <Dots name={"Contact me!"} targetRef={"contact"}/>
+
             </div>
         </nav>
 
