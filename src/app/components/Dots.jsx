@@ -33,7 +33,7 @@ const Dots = ({ name, targetRef }) => {
                 </div>
             </div>
             <div className="dotContainer">
-                <div className= {`dot ${reached ? "bg-blue-600" :"bg-white" } `}></div>
+                <div className= {`dot ${reached ? "bg-primary" :"bg-white" } `}></div>
             </div>
 
         </div>
