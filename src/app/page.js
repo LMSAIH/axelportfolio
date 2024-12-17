@@ -8,11 +8,24 @@ export default function Home() {
 
       <main>
         <div className="left">
-          <div className="introduction" id = "introduction"><p>hey</p> </div>
-          <div className="projects" id = "projects"><p>hey</p> </div>
-          <div className="skills" id ="skills"><p>hey</p> </div>
-          <div className="experience" id = "experience"><p>hey</p> </div>
-          <div className="contact" id ="contact"><p>hey</p> </div>
+          <div className="introduction" id = "introduction">
+            
+          </div>
+          <div className="projects" id = "projects">
+
+
+          </div>
+          <div className="skills" id ="skills">
+
+
+          </div>
+          <div className="experience" id = "experience">
+            
+            </div>
+          <div className="contact" id ="contact">
+
+            
+          </div>
         </div>
       </main>
     </div>
