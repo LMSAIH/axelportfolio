@@ -60,10 +60,25 @@ main{
 
 .experience
 {
-  @apply text-white font-extralight drop-shadow-[0px_0px_7px_rgba(255,255,255,0.8)];
+  @apply text-white font-extralight text-base;
 }
 
 .content{
   @apply w-full h-lvh;
 }
 
+.introduction{
+  @apply bg-backgroudSecondary rounded-md;
+}
+
+.nameContainer{
+  @apply w-full flex justify-center;
+}
+
+.nameContainer>h1{
+  @apply w-fit text-white text-2xl;
+}
+
+.mainImgContainer{
+  @apply w-fit m-auto mt-4;
+}
