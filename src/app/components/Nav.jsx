@@ -4,7 +4,6 @@ import DotConnector from "./DotConnector";
 const NavBar = () => {
     return (
 
-        //remember to adapt dimensions
         <nav>
             <div className="navbar">
 
