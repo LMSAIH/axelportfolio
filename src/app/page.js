@@ -1,5 +1,8 @@
 "use client";
 import NavBar from "./components/Nav";
+import {motion} from 'motion/react';
+import Introduction from "./components/Introduction";
+
 
 export default function Home() {
   return (
@@ -8,24 +11,11 @@ export default function Home() {
 
       <main>
         <div className="left">
-          <div className="introduction" id = "introduction">
-            
-          </div>
-          <div className="projects" id = "projects">
-
-
-          </div>
-          <div className="skills" id ="skills">
-
-
-          </div>
-          <div className="experience" id = "experience">
-            
-            </div>
-          <div className="contact" id ="contact">
-
-            
-          </div>
+          <Introduction />
+          <motion.div className="projects" id="projects"></motion.div>
+          <motion.div className="skills" id="skills"></motion.div>
+          <motion.div className="experience" id="experience"></motion.div>
+          <motion.div className="contact" id="contact"></motion.div>
         </div>
       </main>
     </div>
