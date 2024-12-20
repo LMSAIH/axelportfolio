@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from 'react';
 
+//ele
 
 const Dots = ({ name, targetRef }) => {
 
