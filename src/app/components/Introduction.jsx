@@ -27,7 +27,10 @@ const Introduction = () => {
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
-    const [gitIconPos, setGitIconPos] = useState({ x: 50, y: 50, velocityX: 10, velocityY: 10 });
+    const [gitDisplacementX, setGitDisplacementX] = useState([10]);
+    const [gitDisplacementY, setGitDisplacementY] = useState([10]);
+
+    const [gitIconPos, setGitIconPos] = useState({ x: 50, y: 50, velocityX: 1, velocityY: 1 });
 
     const iconsArray = [gitIconPos];
 
@@ -58,9 +61,14 @@ const Introduction = () => {
             for (let i = 0; i < iconsArray.length; i++) {
                 const limits = constraintsRef.current.getBoundingClientRect();
                 const { x, y, height, width } = limits;
+
                 updatePos(iconsArray[i]);
+                setGitDisplacementX((Math.random()*width)*iconsArray[i].velocityX);
+                setGitDisplacementY((Math.random()*height)*iconsArray[i].velocityY);
+                
             }
-        }, 16);
+
+        }, 1000);
 
         return () => {
             window.removeEventListener("resize", reSize);
@@ -75,6 +83,8 @@ const Introduction = () => {
             className="introduction"
             id="introduction"
             ref={constraintsRef}
+            initial={{scale:0, duration:1}}
+            whileInView={{scale:1,duration:1}}
 
         >
             <div className="nameContainer">
@@ -94,15 +104,14 @@ const Introduction = () => {
                 <motion.div
                     className="individualIcon"
                     animate={{
-                        x: gitIconPos.x,
-                        y: gitIconPos.y,
+                        x: gitDisplacementX,
+                        y: gitDisplacementY,
                     }}
                     transition={{
                         ease: "linear",
+                        duration: 1
                     }}
-                    style={{
-                        position: "absolute",
-                    }}
+                        
                 >
                     <Github01Icon size={width / iconModifierComputer} color={"white"} />
                 </motion.div>
