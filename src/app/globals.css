@@ -5,7 +5,7 @@
 
 
 body {
-  @apply bg-backgroundPrimary w-full h-full pl-10 pt-10 pb-10 pr-0;
+  @apply bg-backgroundPrimary w-full h-full pl-10 pt-10 pb-10 pr-0 overflow-x-hidden;
 }
 
 .content {
@@ -76,9 +76,13 @@ main{
 }
 
 .nameContainer>h1{
-  @apply w-fit text-white text-2xl;
+  @apply w-fit text-white text-5xl mt-2 mb-2 ;
 }
 
 .mainImgContainer{
   @apply w-fit m-auto mt-4;
+}
+
+.iconContainer{
+  @apply flex flex-row m-auto w-fit p-5 gap-8 z-10;
 }
