@@ -30,7 +30,8 @@ const Introduction = () => {
     const [gitDisplacementX, setGitDisplacementX] = useState([10]);
     const [gitDisplacementY, setGitDisplacementY] = useState([10]);
 
-    const [gitIconPos, setGitIconPos] = useState({ x: 50, y: 50, velocityX: 1, velocityY: 1 });
+    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1 });
+    const gitIconRef = useRef(null);
 
     const iconsArray = [gitIconPos];
 
@@ -39,19 +40,18 @@ const Introduction = () => {
         const reSize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", reSize);
 
-        const updatePos = (icon) => {
-            let { x: posX, y: posY, velocityX, velocityY } = icon;
+        const updatePos = (icon, iconloc,limits) => {
+
+            let{x:posX, y:posY} = iconloc;
+
+            let { velocityX, velocityY } = icon;
+            console.log(icon);
+            let {x:left, y:top, width, height} = limits;          
 
             // Bounce off edges
-            if (posY <= 0 || posY >= height) velocityY *= -1;
-            if (posX <= 0 || posX >= width) velocityX *= -1;
+            if (posY <= top || posY >= height) velocityY *= -1;
+            if (posX <= left || posX >= width) velocityX *= -1;
 
-            return {
-                x: posX + velocityX,
-                y: posY + velocityY,
-                velocityX,
-                velocityY,
-            };
         }
         
         const iconTimerChange = setInterval(() => {
@@ -60,11 +60,18 @@ const Introduction = () => {
 
             for (let i = 0; i < iconsArray.length; i++) {
                 const limits = constraintsRef.current.getBoundingClientRect();
-                const { x, y, height, width } = limits;
+                const iconLoc = gitIconRef.current.getBoundingClientRect();
+                
+                updatePos(iconsArray[i], iconLoc,limits);
 
-                updatePos(iconsArray[i]);
-                setGitDisplacementX((Math.random()*width)*iconsArray[i].velocityX);
-                setGitDisplacementY((Math.random()*height)*iconsArray[i].velocityY);
+                let {y:posY, x:posX} = iconsArray[i];
+                let {x,y, width, height} = limits;
+                console.log(x,y);
+                let maxDisplacementTop = (y+height)-posY;
+                let maxDisplacementRight = (x+width)-posX;
+
+                setGitDisplacementX((Math.random()*maxDisplacementRight)*iconsArray[i].velocityX);
+                setGitDisplacementY((Math.random()*maxDisplacementTop)*iconsArray[i].velocityY);
                 
             }
 
@@ -111,7 +118,7 @@ const Introduction = () => {
                         ease: "linear",
                         duration: 1
                     }}
-                        
+                    ref = {gitIconRef}
                 >
                     <Github01Icon size={width / iconModifierComputer} color={"white"} />
                 </motion.div>
