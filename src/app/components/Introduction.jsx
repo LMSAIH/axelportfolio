@@ -45,7 +45,7 @@ const Introduction = () => {
             let{x:posX, y:posY} = iconloc;
 
             let { velocityX, velocityY } = icon;
-            console.log(icon);
+
             let {x:left, y:top, width, height} = limits;          
 
             // Bounce off edges
@@ -62,13 +62,17 @@ const Introduction = () => {
                 const limits = constraintsRef.current.getBoundingClientRect();
                 const iconLoc = gitIconRef.current.getBoundingClientRect();
                 
+                //problem lies with the reference objects
+                if(!limits || !iconLoc) return;
+
                 updatePos(iconsArray[i], iconLoc,limits);
 
                 let {y:posY, x:posX} = iconsArray[i];
                 let {x,y, width, height} = limits;
-                console.log(x,y);
+            
                 let maxDisplacementTop = (y+height)-posY;
                 let maxDisplacementRight = (x+width)-posX;
+                console.log(maxDisplacementRight);
 
                 setGitDisplacementX((Math.random()*maxDisplacementRight)*iconsArray[i].velocityX);
                 setGitDisplacementY((Math.random()*maxDisplacementTop)*iconsArray[i].velocityY);
