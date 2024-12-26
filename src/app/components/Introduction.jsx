@@ -40,20 +40,6 @@ const Introduction = () => {
         const reSize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", reSize);
 
-        const updatePos = (icon, iconloc,limits) => {
-
-            let{x:posX, y:posY} = iconloc;
-
-            let { velocityX, velocityY } = icon;
-
-            let {x:left, y:top, width, height} = limits;          
-
-            // Bounce off edges
-            if (posY <= top || posY >= height) velocityY *= -1;
-            if (posX <= left || posX >= width) velocityX *= -1;
-
-        }
-        
         const iconTimerChange = setInterval(() => {
 
             if (!constraintsRef.current) return;
@@ -61,23 +47,47 @@ const Introduction = () => {
             for (let i = 0; i < iconsArray.length; i++) {
                 const limits = constraintsRef.current.getBoundingClientRect();
                 const iconLoc = gitIconRef.current.getBoundingClientRect();
-                
-                //problem lies with the reference objects
-                if(!limits || !iconLoc) return;
 
-                updatePos(iconsArray[i], iconLoc,limits);
+                if (!limits || !iconLoc) {
+                    return;
+                }
 
-                let {y:posY, x:posX} = iconsArray[i];
-                let {x,y, width, height} = limits;
+                let { y: posY, x: posX, width: iconWidth, height: iconHeight, bottom:iconBottom, right:iconRight } = iconLoc;
+                let { x, y, width, height, bottom, right, left } = limits;
+
+                let displacementX = Math.random() * width;
+                let displacementY = Math.random() * height;
+
+                if (iconsArray[i].velocityY > 0) {
+                    if (iconBottom + displacementY > bottom) {
+                        displacementY = bottom - iconBottom;
+                    }
+                } else {
+                    if (posY - displacementY < top) {
+                        displacementY = posY - top; 
+                    }
+                }
+    
             
-                let maxDisplacementTop = (y+height)-posY;
-                let maxDisplacementRight = (x+width)-posX;
-                console.log(maxDisplacementRight);
+                if (iconsArray[i].velocityX > 0) {
+                    if (iconRight + displacementX > right) {
+                        displacementX = right - iconRight; 
+                    }
+                } else {
+                    if (posX - displacementX < left) {
+                        displacementX = posX - left; 
+                    }
+                }
 
-                setGitDisplacementX((Math.random()*maxDisplacementRight)*iconsArray[i].velocityX);
-                setGitDisplacementY((Math.random()*maxDisplacementTop)*iconsArray[i].velocityY);
-                
+                // Calculate new displacements with adjusted velocity
+                setGitDisplacementX(displacementX * iconsArray[i].velocityX);
+                setGitDisplacementY(displacementY * iconsArray[i].velocityY);
+                iconsArray[i].velocityY *= -1;
+                iconsArray[i].velocityX *= -1;
+
             }
+
+
 
         }, 1000);
 
@@ -85,7 +95,7 @@ const Introduction = () => {
             window.removeEventListener("resize", reSize);
             clearInterval(iconTimerChange);
         };
-    }, []);
+    }, [iconsArray]);
 
     const iconModifierComputer = 20; // Adjust this as needed
 
@@ -94,8 +104,8 @@ const Introduction = () => {
             className="introduction"
             id="introduction"
             ref={constraintsRef}
-            initial={{scale:0, duration:1}}
-            whileInView={{scale:1,duration:1}}
+            initial={{ scale: 0, duration: 1 }}
+            whileInView={{ scale: 1, duration: 1 }}
 
         >
             <div className="nameContainer">
@@ -122,7 +132,8 @@ const Introduction = () => {
                         ease: "linear",
                         duration: 1
                     }}
-                    ref = {gitIconRef}
+                    ref={gitIconRef}
+
                 >
                     <Github01Icon size={width / iconModifierComputer} color={"white"} />
                 </motion.div>
