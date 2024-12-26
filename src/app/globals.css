@@ -84,5 +84,5 @@ main{
 }
 
 .iconContainer{
-  @apply flex flex-row m-auto w-fit p-5 gap-8 z-10;
+  @apply flex flex-row m-auto w-fit p-5 gap-8 z-10 ;
 }
