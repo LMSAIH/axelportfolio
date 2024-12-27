@@ -40,6 +40,7 @@ const Introduction = () => {
         const reSize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", reSize);
 
+        //modified to no avail, leave until later for my mental sanity sake
         const iconTimerChange = setInterval(() => {
 
             if (!constraintsRef.current) return;
@@ -52,7 +53,7 @@ const Introduction = () => {
                     return;
                 }
 
-                let { y: posY, x: posX, width: iconWidth, height: iconHeight, bottom:iconBottom, right:iconRight } = iconLoc;
+                let { y: posY, x: posX, width: iconWidth, height: iconHeight, bottom: iconBottom, right: iconRight } = iconLoc;
                 let { x, y, width, height, bottom, right, left } = limits;
 
                 let displacementX = Math.random() * width;
@@ -64,18 +65,18 @@ const Introduction = () => {
                     }
                 } else {
                     if (posY - displacementY < top) {
-                        displacementY = posY - top; 
+                        displacementY = posY - top;
                     }
                 }
-    
-            
+
+
                 if (iconsArray[i].velocityX > 0) {
                     if (iconRight + displacementX > right) {
-                        displacementX = right - iconRight; 
+                        displacementX = right - iconRight;
                     }
                 } else {
                     if (posX - displacementX < left) {
-                        displacementX = posX - left; 
+                        displacementX = posX - left;
                     }
                 }
 
