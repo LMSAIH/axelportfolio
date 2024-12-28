@@ -40,7 +40,7 @@ const Introduction = () => {
         const reSize = () => setWidth(window.innerWidth);
         window.addEventListener("resize", reSize);
 
-        //modified to no avail, leave until later for my mental sanity sake
+        //modified to no avail, leave until later for my mental sanity sake v2
         const iconTimerChange = setInterval(() => {
 
             if (!constraintsRef.current) return;
