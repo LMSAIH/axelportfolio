@@ -27,13 +27,30 @@ const Introduction = () => {
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
-    const [gitDisplacementX, setGitDisplacementX] = useState([10]);
-    const [gitDisplacementY, setGitDisplacementY] = useState([10]);
-
-    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1 });
+    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10,10] });
     const gitIconRef = useRef(null);
+  
 
-    const iconsArray = [gitIconPos];
+    const [npmIconPos, setNpmIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const npmIconRef = useRef(null);
+
+    const [reactIconPos, setReactIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const reactIconRef = useRef(null);
+
+    const [cppIconPos, setCppIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const cppIconRef = useRef(null);
+
+    const [javaIconPos, setJavaIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const javaIconRef = useRef(null);
+
+    const [javaScriptIconPos, setJavaScriptIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const javaScriptIconRef = useRef(null);
+
+    const iconsArray = [gitIconPos, npmIconPos, reactIconPos, cppIconPos, javaIconPos, javaScriptIconPos];
+    const iconsStateSetters = [setGitIconPos, setNpmIconPos, setReactIconPos, setCppIconPos, setJavaIconPos, setJavaScriptIconPos];
+
+    const iconsRefArray = [gitIconRef, npmIconRef, reactIconRef, cppIconRef, javaIconRef, javaScriptIconRef];
+
 
     useEffect(() => {
 
@@ -47,7 +64,8 @@ const Introduction = () => {
 
             for (let i = 0; i < iconsArray.length; i++) {
                 const limits = constraintsRef.current.getBoundingClientRect();
-                const iconLoc = gitIconRef.current.getBoundingClientRect();
+                const iconLoc = iconsRefArray[i].current.getBoundingClientRect();
+                const currentIcon = iconsArray[i];
 
                 if (!limits || !iconLoc) {
                     return;
@@ -80,11 +98,14 @@ const Introduction = () => {
                     }
                 }
 
-                // Calculate new displacements with adjusted velocity
-                setGitDisplacementX(displacementX * iconsArray[i].velocityX);
-                setGitDisplacementY(displacementY * iconsArray[i].velocityY);
+                iconsStateSetters[i]((prevState) => ({
+                    ...prevState,
+                    velocityX: currentIcon.velocityX,
+                    velocityY: currentIcon.velocityY,
+                    displacement: [displacementX, displacementY],
+                }));
+
                 iconsArray[i].velocityY *= -1;
-                iconsArray[i].velocityX *= -1;
 
             }
 
@@ -96,7 +117,7 @@ const Introduction = () => {
             window.removeEventListener("resize", reSize);
             clearInterval(iconTimerChange);
         };
-    }, [iconsArray]);
+    }, []);
 
     const iconModifierComputer = 20; // Adjust this as needed
 
@@ -126,8 +147,8 @@ const Introduction = () => {
                 <motion.div
                     className="individualIcon"
                     animate={{
-                        x: gitDisplacementX,
-                        y: gitDisplacementY,
+                        x: gitIconPos.displacement[0],
+                        y: gitIconPos.displacement[1],
                     }}
                     transition={{
                         ease: "linear",
@@ -138,19 +159,65 @@ const Introduction = () => {
                 >
                     <Github01Icon size={width / iconModifierComputer} color={"white"} />
                 </motion.div>
-                <motion.div className="individualIcon">
+                <motion.div className="individualIcon"
+                    animate={{
+                        x: npmIconPos.displacement[0],
+                        y: npmIconPos.displacement[1],
+                    }}
+                    transition={{
+                        ease: "linear",
+                        duration: 1
+                    }}
+                    ref={npmIconRef}
+                >
                     <NpmIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
-                <motion.div className="individualIcon">
+                <motion.div className="individualIcon"
+                 animate={{
+                    x: reactIconPos.displacement[0],
+                    y: reactIconPos.displacement[1],
+                }}
+                transition={{
+                    ease: "linear",
+                    duration: 1
+                }}
+                ref={reactIconRef}>
                     <ReactIcon size={width / iconModifierComputer} color={"#61dbfb"} />
                 </motion.div>
-                <motion.div className="individualIcon">
+                <motion.div className="individualIcon"
+                 animate={{
+                    x: cppIconPos.displacement[0],
+                    y: cppIconPos.displacement[1],
+                }}
+                transition={{
+                    ease: "linear",
+                    duration: 1
+                }}
+                ref={cppIconRef}>
                     <CIcon size={width / iconModifierComputer} color={"#015482"} />
                 </motion.div>
-                <motion.div className="individualIcon">
+                <motion.div className="individualIcon"
+                  animate={{
+                    x: javaIconPos.displacement[0],
+                    y: javaIconPos.displacement[1],
+                }}
+                transition={{
+                    ease: "linear",
+                    duration: 1
+                }}
+                ref={javaIconRef}>
                     <JavaIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
-                <motion.div className="individualIcon">
+                <motion.div className="individualIcon"
+                   animate={{
+                    x: javaScriptIconPos.displacement[0],
+                    y: javaScriptIconPos.displacement[1],
+                }}
+                transition={{
+                    ease: "linear",
+                    duration: 1
+                }}
+                ref={javaScriptIconRef}>
                     <JavaScriptIcon size={width / iconModifierComputer} color={"yellow"} />
                 </motion.div>
             </motion.div>
