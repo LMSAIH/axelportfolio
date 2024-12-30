@@ -68,7 +68,7 @@ main{
 }
 
 .introduction{
-  @apply bg-backgroudSecondary rounded-md;
+  @apply bg-backgroudSecondary rounded-sm;
 }
 
 .nameContainer{
@@ -76,13 +76,46 @@ main{
 }
 
 .nameContainer>h1{
-  @apply w-fit text-white text-5xl mt-2 mb-2 ;
+  @apply w-fit p-4 text-white text-4xl mt-10 mb-10 text-center rounded-none shadow-[1.25rem_1.25rem_0_#101010,-1.25rem_-1.25rem_0_#404040] ;
 }
 
+.middleContainer{
+  @apply flex flex-row gap-2;
+}
+
+.dragMe{
+  @apply w-fit mr-auto mt-20 mb-auto ml-0;
+}
+
+.dragMe>p{
+  text-shadow: black 1px 1px 1px;
+  @apply w-fit text-center text-3xl text-third;
+}
 .mainImgContainer{
-  @apply w-fit m-auto mt-4;
+  @apply w-fit m-auto  mt-4 bg-none;
+}
+
+.mainImgContainer:hover{
+  @apply bg-backgroundFourth shadow-[1.25rem_1.25rem_0_#000000,-1.25rem_-1.25rem_0_#404040] rotate-2;
 }
 
 .iconContainer{
   @apply flex flex-row m-auto w-fit p-5 gap-8 z-10 ;
+}
+
+.secondParagraph{
+  @apply block mt-5;
+}
+
+.authorName{
+  text-shadow:black 1px 1px 1px;
+  @apply text-third ;
+}
+
+.introductionArrow{
+  @apply m-auto mt-5 w-fit;
+}
+
+.introductionArrow:hover{
+  @apply rotate-6;
 }
