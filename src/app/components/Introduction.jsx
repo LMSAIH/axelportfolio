@@ -4,17 +4,25 @@ import { motion, useDragControls } from 'motion/react';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { Poppins } from 'next/font/google';
-import { Github01Icon, GithubIcon } from 'hugeicons-react';
+import {Orbitron }from 'next/font/google';
+import { Github01Icon } from 'hugeicons-react';
 import { NpmIcon } from 'hugeicons-react';
 import { ReactIcon } from 'hugeicons-react';
 import { CIcon } from 'hugeicons-react';
 import { JavaIcon } from 'hugeicons-react';
 import { JavaScriptIcon } from 'hugeicons-react';
+import { ArrowMoveDownLeftIcon } from 'hugeicons-react';
 
 const poppins = Poppins({
     subsets: ['latin'],
     weight: ['400', '500', '700'],
 });
+
+const orbitron = Orbitron({
+    subsets: ['latin'],
+    weight: ['400', '500', '700'],
+});
+
 
 const iconModifierComputer = 30;
 const primary = "#a33100";
@@ -27,23 +35,23 @@ const Introduction = () => {
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
-    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const gitIconRef = useRef(null);
-  
 
-    const [npmIconPos, setNpmIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10,10] });
+
+    const [npmIconPos, setNpmIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const npmIconRef = useRef(null);
 
-    const [reactIconPos, setReactIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const [reactIconPos, setReactIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const reactIconRef = useRef(null);
 
-    const [cppIconPos, setCppIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const [cppIconPos, setCppIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const cppIconRef = useRef(null);
 
-    const [javaIconPos, setJavaIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const [javaIconPos, setJavaIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const javaIconRef = useRef(null);
 
-    const [javaScriptIconPos, setJavaScriptIconPos] = useState({velocityX: 1, velocityY: 1, displacement: [10,10] });
+    const [javaScriptIconPos, setJavaScriptIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const javaScriptIconRef = useRef(null);
 
     const iconsArray = [gitIconPos, npmIconPos, reactIconPos, cppIconPos, javaIconPos, javaScriptIconPos];
@@ -131,17 +139,23 @@ const Introduction = () => {
 
         >
             <div className="nameContainer">
-                <h1> Axel Velasquez </h1>
+                <h1 className = {orbitron.className}> Hello 👋 <span className="secondParagraph">My name is <span className="authorName">Axel Velasquez</span></span> </h1>
             </div>
-            <motion.div
-                className="mainImgContainer"
-                drag
-                dragConstraints={constraintsRef}
-                dragControls={dragControls}
-                style={{ cursor: "grab" }}
-            >
-                <Image src="/mainScreenPicture.svg" width={width / 2} height={width / 2} alt="Coder picture" unoptimized />
-            </motion.div>
+            <div className="middleContainer">
+                <motion.div
+                    className="mainImgContainer"
+                    drag
+                    dragConstraints={constraintsRef}
+                    dragControls={dragControls}
+                    style={{ cursor: "grab" }}
+                >
+                    <Image src="/mainScreenPicture.svg" width={width / 2} height={width / 2} alt="Coder picture" unoptimized />
+                </motion.div>
+                <div className={`dragMe ${orbitron.className}`}>
+                    <p> Drag me!</p>
+                    <ArrowMoveDownLeftIcon size = {width/iconModifierComputer} color = {primary} className = "introductionArrow"/> 
+                </div>
+            </div>
 
             <motion.div className="iconContainer">
                 <motion.div
@@ -173,51 +187,51 @@ const Introduction = () => {
                     <NpmIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                 animate={{
-                    x: reactIconPos.displacement[0],
-                    y: reactIconPos.displacement[1],
-                }}
-                transition={{
-                    ease: "linear",
-                    duration: 1
-                }}
-                ref={reactIconRef}>
+                    animate={{
+                        x: reactIconPos.displacement[0],
+                        y: reactIconPos.displacement[1],
+                    }}
+                    transition={{
+                        ease: "linear",
+                        duration: 1
+                    }}
+                    ref={reactIconRef}>
                     <ReactIcon size={width / iconModifierComputer} color={"#61dbfb"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                 animate={{
-                    x: cppIconPos.displacement[0],
-                    y: cppIconPos.displacement[1],
-                }}
-                transition={{
-                    ease: "linear",
-                    duration: 1
-                }}
-                ref={cppIconRef}>
+                    animate={{
+                        x: cppIconPos.displacement[0],
+                        y: cppIconPos.displacement[1],
+                    }}
+                    transition={{
+                        ease: "linear",
+                        duration: 1
+                    }}
+                    ref={cppIconRef}>
                     <CIcon size={width / iconModifierComputer} color={"#015482"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                  animate={{
-                    x: javaIconPos.displacement[0],
-                    y: javaIconPos.displacement[1],
-                }}
-                transition={{
-                    ease: "linear",
-                    duration: 1
-                }}
-                ref={javaIconRef}>
+                    animate={{
+                        x: javaIconPos.displacement[0],
+                        y: javaIconPos.displacement[1],
+                    }}
+                    transition={{
+                        ease: "linear",
+                        duration: 1
+                    }}
+                    ref={javaIconRef}>
                     <JavaIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                   animate={{
-                    x: javaScriptIconPos.displacement[0],
-                    y: javaScriptIconPos.displacement[1],
-                }}
-                transition={{
-                    ease: "linear",
-                    duration: 1
-                }}
-                ref={javaScriptIconRef}>
+                    animate={{
+                        x: javaScriptIconPos.displacement[0],
+                        y: javaScriptIconPos.displacement[1],
+                    }}
+                    transition={{
+                        ease: "linear",
+                        duration: 1
+                    }}
+                    ref={javaScriptIconRef}>
                     <JavaScriptIcon size={width / iconModifierComputer} color={"yellow"} />
                 </motion.div>
             </motion.div>
