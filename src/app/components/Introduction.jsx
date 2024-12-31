@@ -153,7 +153,7 @@ const Introduction = () => {
                 </motion.div>
                 <div className={`dragMe ${orbitron.className}`}>
                     <p> Drag me!</p>
-                    <ArrowMoveDownLeftIcon size = {width/iconModifierComputer} color = {primary} className = "introductionArrow"/> 
+                    <ArrowMoveDownLeftIcon size = {width/10} color = {primary} className = "introductionArrow"/> 
                 </div>
             </div>
 
