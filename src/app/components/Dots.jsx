@@ -16,7 +16,7 @@ const Dots = ({ name, targetRef }) => {
           ([entry]) => {
             setReached(entry.isIntersecting);
           },
-          { threshold: 0.9 }
+          { threshold: 0.7 }
         );
     
         observer.observe(target);
