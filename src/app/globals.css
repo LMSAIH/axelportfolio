@@ -100,7 +100,7 @@ main{
 }
 
 .iconContainer{
-  @apply flex flex-row m-auto w-fit p-5 gap-8 z-10 ;
+  @apply flex flex-row m-auto mt-0 mb-0 w-fit p-5 gap-8 z-10 ;
 }
 
 .secondParagraph{
@@ -119,3 +119,25 @@ main{
 .introductionArrow:hover{
   @apply rotate-6;
 }
+
+.whoAmI{
+  @apply w-8/12 m-auto p-5;
+}
+
+.whoAmIContent>p{
+  @apply text-white text-xl  ;
+}
+
+.whoAmIColored{
+  @apply text-fourth;
+}
+
+.whoAmIContent{
+  
+  @apply p-7 mb-12 mt-0 bg-backgroundThird rounded-md flex flex-row w-full;
+}
+
+.eurekaIcon{
+  @apply size-1/3 m-auto pr-4;
+}
+
