@@ -89,7 +89,7 @@ main{
 
 .dragMe>p{
   text-shadow: black 1px 1px 1px;
-  @apply w-fit text-center text-3xl text-third;
+  @apply w-fit text-center text-5xl text-third;
 }
 .mainImgContainer{
   @apply w-fit m-auto  mt-4 bg-none;
@@ -113,7 +113,7 @@ main{
 }
 
 .introductionArrow{
-  @apply m-auto mt-5 w-fit;
+  @apply m-auto mt-5 w-fit -translate-x-1/2;
 }
 
 .introductionArrow:hover{
