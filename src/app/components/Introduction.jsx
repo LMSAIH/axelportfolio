@@ -12,6 +12,7 @@ import { CIcon } from 'hugeicons-react';
 import { JavaIcon } from 'hugeicons-react';
 import { JavaScriptIcon } from 'hugeicons-react';
 import { ArrowMoveDownLeftIcon } from 'hugeicons-react';
+import WhoAmI from './WhoAmI';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -235,6 +236,7 @@ const Introduction = () => {
                     <JavaScriptIcon size={width / iconModifierComputer} color={"yellow"} />
                 </motion.div>
             </motion.div>
+            <WhoAmI className = {orbitron.className}/>
         </motion.div>
     );
 };
