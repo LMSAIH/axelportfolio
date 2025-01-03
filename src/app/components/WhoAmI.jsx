@@ -2,6 +2,7 @@ import { Idea01Icon } from "hugeicons-react";
 
 const WhoAmI = () => {
     return (
+        //add icon
         <div className="whoAmI">
             <div className="whoAmIContent">
             <Idea01Icon size = "5rem" className="eurekaIcon" color="yellow"/> 
