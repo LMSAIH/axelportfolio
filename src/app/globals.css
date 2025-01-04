@@ -148,7 +148,7 @@ main{
 
 .projectsHeader{
   clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
-  @apply w-fit  bg-backgroundFifth p-5 mb-10 rounded-sm;
+  @apply w-fit bg-backgroundFifth p-5 pr-8 mb-10 rounded-sm;
 }
 
 .projectsHeader>h2{
@@ -159,3 +159,9 @@ main{
   @apply text-primary;
 }
 
+.project{
+  @apply w-fit m-auto;
+}
+.projectImageContainer{
+  @apply w-fit m-auto;
+}
