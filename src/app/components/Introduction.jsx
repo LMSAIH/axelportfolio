@@ -3,8 +3,6 @@
 import { motion, useDragControls } from 'motion/react';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
-import { Poppins } from 'next/font/google';
-import {Orbitron }from 'next/font/google';
 import { Github01Icon } from 'hugeicons-react';
 import { NpmIcon } from 'hugeicons-react';
 import { ReactIcon } from 'hugeicons-react';
@@ -14,23 +12,14 @@ import { JavaScriptIcon } from 'hugeicons-react';
 import { ArrowMoveDownLeftIcon } from 'hugeicons-react';
 import WhoAmI from './WhoAmI';
 
-const poppins = Poppins({
-    subsets: ['latin'],
-    weight: ['400', '500', '700'],
-});
-
-const orbitron = Orbitron({
-    subsets: ['latin'],
-    weight: ['400', '500', '700'],
-});
-
-
 const iconModifierComputer = 30;
 const primary = "#a33100";
 const velocity = 80;
 
 
-const Introduction = () => {
+const Introduction = ({fonts}) => {
+
+    const orbitron = fonts[0];
     const [width, setWidth] = useState(window.innerWidth);
     const [height, setHeight] = useState(window.innerHeight);
     const constraintsRef = useRef(null);
