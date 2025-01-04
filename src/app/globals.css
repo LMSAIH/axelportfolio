@@ -148,7 +148,7 @@ main{
 
 .projectsHeader{
   clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
-  @apply w-fit  bg-backgroundFifth p-5 mb-10;
+  @apply w-fit  bg-backgroundFifth p-5 mb-10 rounded-sm;
 }
 
 .projectsHeader>h2{
