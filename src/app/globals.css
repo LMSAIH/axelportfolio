@@ -160,8 +160,16 @@ main{
 }
 
 .project{
-  @apply w-fit m-auto;
+  @apply w-full m-auto mb-20 flex flex-row  rounded-md bg-backgroundThird;
 }
 .projectImageContainer{
-  @apply w-fit m-auto;
+  @apply m-0;
+}
+
+.projectContent{
+  @apply bg-backgroundThird w-full rounded-md m-0 p-2;
+}
+
+.projectTitle{
+  @apply text-white text-xl text-center;
 }
