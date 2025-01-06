@@ -24,7 +24,7 @@ const Project = ({ fonts, source }) => {
         }}>
         <video width="1000px" loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref = {videoRef}>
           <source src={source} type="video/mp4" />
-          Your browser does not support the video tag.
+          Your browser does not support the video tag, please try in a different browser.
         </video>
       </div>
     </motion.div>
