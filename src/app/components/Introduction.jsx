@@ -11,6 +11,7 @@ import { JavaIcon } from 'hugeicons-react';
 import { JavaScriptIcon } from 'hugeicons-react';
 import { ArrowMoveDownLeftIcon } from 'hugeicons-react';
 import WhoAmI from './WhoAmI';
+import useWindowSize from '../hooks/useWindowSize';
 
 const iconModifierComputer = 30;
 const primary = "#a33100";
@@ -20,8 +21,7 @@ const velocity = 80;
 const Introduction = ({fonts}) => {
 
     const orbitron = fonts[0];
-    const [width, setWidth] = useState(window.innerWidth);
-    const [height, setHeight] = useState(window.innerHeight);
+    const {width, height} = useWindowSize();
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
@@ -52,8 +52,7 @@ const Introduction = ({fonts}) => {
 
     useEffect(() => {
 
-        const reSize = () => setWidth(window.innerWidth);
-        window.addEventListener("resize", reSize);
+       
 
         //modified to no avail, leave until later for my mental sanity sake v2
         const iconTimerChange = setInterval(() => {
@@ -112,7 +111,6 @@ const Introduction = ({fonts}) => {
         }, 1000);
 
         return () => {
-            window.removeEventListener("resize", reSize);
             clearInterval(iconTimerChange);
         };
     }, []);
