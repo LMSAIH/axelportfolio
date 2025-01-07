@@ -1,9 +1,12 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import useWindowSize from "../hooks/useWindowSize";
+import HtmlInjector from "../injectors/HtmlInjector";
+import { Html5Icon } from "hugeicons-react";
+import { JavaScriptIcon } from "hugeicons-react";
+import { AmazonIcon } from "hugeicons-react";
 
-
-const Project = ({ fonts, source, number, projectTitle, projectContent }) => {
+const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) => {
 
   const videoRef = useRef(null);
   const orbitron = fonts[0];
@@ -14,6 +17,31 @@ const Project = ({ fonts, source, number, projectTitle, projectContent }) => {
     if (videoRef.current) {
       videoRef.current.play();
       setIsActive(true);
+    }
+  };
+
+  const InjectIcons = ({ value, className }) => {
+    switch (value) {
+      case "html":
+        return (
+          <div className={className}>
+            <Html5Icon  />
+          </div>
+        );
+      case "js":
+        return (
+          <div className={className}>
+            <JavaScriptIcon />
+          </div>
+        );
+      case "aws":
+        return (
+          <div  className={className}>
+            <AmazonIcon  />
+          </div>
+        );
+      default:
+        return null;
     }
   };
 
@@ -60,16 +88,19 @@ const Project = ({ fonts, source, number, projectTitle, projectContent }) => {
         backgroundColor: active ? "transparent" : "rgba(0, 0, 0, 0.5)",
         transition: "filter 0.15s ease, background-color 0.15s ease",
       }}>
-        <video width={width/2.5} loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
+        <video width={width / 2.5} loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
           <source src={source} type="video/mp4" />
           Your browser does not support the video tag, please try in a different browser.
         </video>
       </div>
       <div className="projectContent">
         <h3 className={`${orbitron.className} projectTitle`}> {projectTitle} </h3>
-        <p> {projectContent} </p>
+        <HtmlInjector htmlContent={htmlContent} className={"projectDescription"} />
+
         <div className="techIconsContainer">
-          
+          {skills && Object.entries(skills).map(([key, value]) => (
+            <InjectIcons key={key} value={value} className = "projectTechIcon" />
+          ))}
         </div>
       </div>
     </motion.div>
