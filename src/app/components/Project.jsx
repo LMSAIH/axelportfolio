@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import useWindowSize from "../hooks/useWindowSize";
 
 
-const Project = ({ fonts, source, number }) => {
+const Project = ({ fonts, source, number, projectTitle, projectContent }) => {
 
   const videoRef = useRef(null);
   const orbitron = fonts[0];
@@ -66,7 +66,11 @@ const Project = ({ fonts, source, number }) => {
         </video>
       </div>
       <div className="projectContent">
-        <h3 className={`${orbitron.className} projectTitle`}> This is simply a title </h3>
+        <h3 className={`${orbitron.className} projectTitle`}> {projectTitle} </h3>
+        <p> {projectContent} </p>
+        <div className="techIconsContainer">
+          
+        </div>
       </div>
     </motion.div>
   );
