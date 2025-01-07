@@ -171,9 +171,40 @@ main{
 }
 
 .projectTitle{
-  @apply text-white text-xl text-center;
+  @apply text-third text-3xl text-center;
 }
 
 .projectContent{
-  @apply text-white text-lg text-center;
+  @apply text-white text-lg text-center mt-5 mb-5 w-fit;
+}
+
+.projectDescription{
+  @apply p-5 w-fit;
+}
+
+.projectDescription>p{
+  @apply text-lg;
+}
+
+.projectDescription>p>a{
+  @apply text-blue-400 ; 
+}
+
+.projectDescription>p>a:hover{
+  @apply text-fifth duration-500;
+}
+
+.projectDescription>p>span{
+  @apply text-fourth;
+}
+
+.techIconsContainer{
+  @apply flex flex-row justify-center gap-10 w-full mt-auto mb-auto;
+}
+
+.projectTechIcon>svg{
+  @apply size-12 ;
+}
+.projectTechIcon>svg:hover{
+  @apply rotate-6 fill-blue-400;
 }
