@@ -173,3 +173,7 @@ main{
 .projectTitle{
   @apply text-white text-xl text-center;
 }
+
+.projectContent{
+  @apply text-white text-lg text-center;
+}
