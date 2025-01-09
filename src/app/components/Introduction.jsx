@@ -34,6 +34,12 @@ const Introduction = ({ fonts }) => {
 
     const iconsRefArray = [gitIconRef, npmIconRef, reactIconRef, cppIconRef, javaIconRef, javaScriptIconRef];
 
+    //let this be a testament of the idommitable human spirit, as I wasted almost 10 hours of my life figuring this out.
+    // For future reference, the damned position is relative to the user's viewport, not the absolute element's position
+    //  in the website.This, was done with the utmost malice and I wish noone has to ever do this shit again. If you have, 
+    // well, you have it easier now, as I did not. Please take the windo2 scroll into account, x was not taken into account 
+    // for the scroll as you can't scroll x in this website, if that is to change, straight up delete this element, or simply 
+    // modify it to account for the xScroll, I wish you the best, and please, spread this knowledge if you can. 
     useEffect(() => {
 
         for (let i = 0; i < iconsRefArray.length; i++) {
@@ -59,9 +65,9 @@ const Introduction = ({ fonts }) => {
                 const adjustedIconLimit = iconRect.y + window.scrollY + iconRect.height;
 
 
-                if(adjustedYLimit == adjustedIconLimit){
-                    x=0;
-                    y=0;
+                if (adjustedYLimit == adjustedIconLimit) {
+                    x = 0;
+                    y = 0;
                 }
 
                 if (adjustedIconLimit > adjustedYLimit || iconRect.y < adjustedYStart) {
