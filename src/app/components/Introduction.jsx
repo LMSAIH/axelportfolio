@@ -18,101 +18,74 @@ const primary = "#a33100";
 const velocity = 80;
 
 
-const Introduction = ({fonts}) => {
+const Introduction = ({ fonts }) => {
 
     const orbitron = fonts[0];
-    const {width, height} = useWindowSize();
+    const { width, height } = useWindowSize();
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
-    const [gitIconPos, setGitIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const gitIconRef = useRef(null);
-
-
-    const [npmIconPos, setNpmIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const npmIconRef = useRef(null);
-
-    const [reactIconPos, setReactIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const reactIconRef = useRef(null);
-
-    const [cppIconPos, setCppIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const cppIconRef = useRef(null);
-
-    const [javaIconPos, setJavaIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const javaIconRef = useRef(null);
-
-    const [javaScriptIconPos, setJavaScriptIconPos] = useState({ velocityX: 1, velocityY: 1, displacement: [10, 10] });
     const javaScriptIconRef = useRef(null);
-
-    const iconsArray = [gitIconPos, npmIconPos, reactIconPos, cppIconPos, javaIconPos, javaScriptIconPos];
-    const iconsStateSetters = [setGitIconPos, setNpmIconPos, setReactIconPos, setCppIconPos, setJavaIconPos, setJavaScriptIconPos];
 
     const iconsRefArray = [gitIconRef, npmIconRef, reactIconRef, cppIconRef, javaIconRef, javaScriptIconRef];
 
-
     useEffect(() => {
 
-       
+        for (let i = 0; i < iconsRefArray.length; i++) {
 
-        //modified to no avail, leave until later for my mental sanity sake v2
-        const iconTimerChange = setInterval(() => {
+            const container = constraintsRef.current;
+            const iconContainer = iconsRefArray[i].current;
 
-            if (!constraintsRef.current) return;
+            if ((!container || !iconContainer)) return;
+            let y = 0;
+            let x = 0;
+            let yVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
+            let xVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
 
-            for (let i = 0; i < iconsArray.length; i++) {
-                const limits = constraintsRef.current.getBoundingClientRect();
-                const iconLoc = iconsRefArray[i].current.getBoundingClientRect();
-                const currentIcon = iconsArray[i];
+            function move() {
 
-                if (!limits || !iconLoc) {
-                    return;
+
+                // Check for collisions with the container boundaries
+                const containerRect = container.getBoundingClientRect();
+                const iconRect = iconContainer.getBoundingClientRect();
+
+                const adjustedYStart = containerRect.y;
+                const adjustedYLimit = containerRect.y + window.scrollY + containerRect.height;
+                const adjustedIconLimit = iconRect.y + window.scrollY + iconRect.height;
+
+
+                if(adjustedYLimit == adjustedIconLimit){
+                    x=0;
+                    y=0;
                 }
 
-                let { y: posY, x: posX, width: iconWidth, height: iconHeight, bottom: iconBottom, right: iconRight } = iconLoc;
-                let { x, y, width, height, bottom, right, left } = limits;
-
-                let displacementX = Math.random() * width;
-                let displacementY = Math.random() * height;
-
-                if (iconsArray[i].velocityY > 0) {
-                    if (iconBottom + displacementY > bottom) {
-                        displacementY = bottom - iconBottom;
-                    }
-                } else {
-                    if (posY - displacementY < top) {
-                        displacementY = posY - top;
-                    }
+                if (adjustedIconLimit > adjustedYLimit || iconRect.y < adjustedYStart) {
+                    yVelocity *= -1;
                 }
 
-
-                if (iconsArray[i].velocityX > 0) {
-                    if (iconRight + displacementX > right) {
-                        displacementX = right - iconRight;
-                    }
-                } else {
-                    if (posX - displacementX < left) {
-                        displacementX = posX - left;
-                    }
+                if (iconRect.x < containerRect.x || iconRect.x + iconRect.width > containerRect.x + containerRect.width) {
+                    xVelocity *= -1;
                 }
 
-                iconsStateSetters[i]((prevState) => ({
-                    ...prevState,
-                    velocityX: currentIcon.velocityX,
-                    velocityY: currentIcon.velocityY,
-                    displacement: [displacementX, displacementY],
-                }));
+                y += yVelocity;
+                x += xVelocity;
 
-                iconsArray[i].velocityY *= -1;
+                iconContainer.style.transform = `translate(${x}px, ${y}px)`;
+
+
+                requestAnimationFrame(move);
+
 
             }
 
+            move();
+        }
 
-
-        }, 1000);
-
-        return () => {
-            clearInterval(iconTimerChange);
-        };
     }, []);
 
     const iconModifierComputer = 20; // Adjust this as needed
@@ -127,7 +100,7 @@ const Introduction = ({fonts}) => {
 
         >
             <div className="nameContainer">
-                <h1 className = {orbitron.className}> Hello 👋 <span className="secondParagraph">My name is <span className="authorName">Axel Velasquez</span></span> </h1>
+                <h1 className={orbitron.className}> Hello 👋 <span className="secondParagraph">My name is <span className="authorName">Axel Velasquez</span></span> </h1>
             </div>
             <div className="middleContainer">
                 <motion.div
@@ -141,89 +114,47 @@ const Introduction = ({fonts}) => {
                 </motion.div>
                 <div className={`dragMe ${orbitron.className}`}>
                     <p> Drag me!</p>
-                    <ArrowMoveDownLeftIcon size = {width/10} color = {primary} className = "introductionArrow"/> 
+                    <ArrowMoveDownLeftIcon size={width / 10} color={primary} className="introductionArrow" />
                 </div>
             </div>
 
             <motion.div className="iconContainer">
                 <motion.div
                     className="individualIcon"
-                    animate={{
-                        x: gitIconPos.displacement[0],
-                        y: gitIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={gitIconRef}
 
                 >
                     <Github01Icon size={width / iconModifierComputer} color={"white"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                    animate={{
-                        x: npmIconPos.displacement[0],
-                        y: npmIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={npmIconRef}
                 >
                     <NpmIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                    animate={{
-                        x: reactIconPos.displacement[0],
-                        y: reactIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={reactIconRef}>
                     <ReactIcon size={width / iconModifierComputer} color={"#61dbfb"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                    animate={{
-                        x: cppIconPos.displacement[0],
-                        y: cppIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={cppIconRef}>
                     <CIcon size={width / iconModifierComputer} color={"#015482"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                    animate={{
-                        x: javaIconPos.displacement[0],
-                        y: javaIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={javaIconRef}>
                     <JavaIcon size={width / iconModifierComputer} color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
-                    animate={{
-                        x: javaScriptIconPos.displacement[0],
-                        y: javaScriptIconPos.displacement[1],
-                    }}
-                    transition={{
-                        ease: "linear",
-                        duration: 1
-                    }}
+
                     ref={javaScriptIconRef}>
                     <JavaScriptIcon size={width / iconModifierComputer} color={"yellow"} />
                 </motion.div>
             </motion.div>
-            <WhoAmI className = {orbitron.className}/>
+            <WhoAmI className={orbitron.className} />
         </motion.div>
     );
 };
