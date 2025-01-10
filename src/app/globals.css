@@ -208,3 +208,39 @@ main{
 .projectTechIcon>svg:hover{
   @apply rotate-6 fill-blue-400;
 }
+
+.skills{
+  @apply pt-10 pb-10 mt-10 mb-10  border-white border-solid w-full h-fit border-2 rounded-sm pl-3 pr-3;
+}
+
+.skills>h3{
+  
+  @apply  shadow-white text-2xl text-center text-white bg-backgroundFourth   w-full pt-4 pb-4 rounded-md ;
+}
+
+.skillContainer{
+  @apply flex flex-row w-full flex-wrap mt-10 mb-10 justify-center gap-20; 
+}
+
+.skill-card {
+ @apply w-3/12 ;
+}
+
+.skill {
+  @apply w-full bg-backgroundFourth rounded-xl p-10 relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.skill:hover {
+  @apply opacity-70 duration-300 cursor-pointer;
+}
+
+.skill>h4 {
+  @apply text-2xl text-white;
+}
+
+.skillIcon {
+  @apply size-full;
+}
+
