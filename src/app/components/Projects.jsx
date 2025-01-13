@@ -4,6 +4,7 @@ import Project from './Project';
 
 const Projects = ({fonts}) => {
 
+    //change the way we get fonts
     const orbitron = fonts[0];
     return ( 
         <motion.div className="projects" id="projects">
