@@ -18,8 +18,10 @@ export default {
         backgroundThird: "#3f3f3f",
         backgroundFourth: "#575757",
         backgroundFifth: "#8b8b8b",
-
       },
+    },
+    animation: {
+      "spin-slow": "spin 5s linear infinite",
     },
   },
   plugins: [],
