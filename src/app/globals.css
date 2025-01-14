@@ -183,7 +183,7 @@ main{
 }
 
 .projectDescription>p{
-  @apply text-lg;
+  @apply text-xl;
 }
 
 .projectDescription>p>a{
@@ -227,8 +227,7 @@ main{
 }
 
 .skill {
-  @apply w-full bg-backgroundFourth rounded-xl p-10 relative;
-  transform-style: preserve-3d;
+  @apply w-full bg-backgroundFourth rounded-xl p-10 relative overflow-hidden;
   transition: transform 0.6s;
 }
 
@@ -237,10 +236,24 @@ main{
 }
 
 .skill>h4 {
-  @apply text-2xl text-white;
+  @apply text-2xl text-white text-center z-50 relative;
 }
 
 .skillIcon {
-  @apply size-full;
+  @apply size-6/12 m-auto animate-spin-slow z-50 relative;
 }
 
+.skillDescription{
+  @apply text-lg text-white  text-center z-50 relative;
+}
+
+
+.leftCovering{
+  clip-path: polygon(50% 0, 0 0, 0 30%);
+  @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-third z-0;
+}
+
+.rightCovering{
+  clip-path: polygon(100% 70%, 100% 100%, 50% 100%);
+  @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-third z-0 ;
+}
