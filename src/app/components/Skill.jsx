@@ -1,35 +1,18 @@
 const Skill = ({ skillName, SkillIcon, skillDescription, skillColor, fonts, number }) => {
 
-    const activeModal = () => {
-
-        const element = document.querySelector(".sD" + number);
-
-        if (!element) return;
-
-        if (element.classList.contains("modalActive")) {
-
-            element.classList.remove("modalActive");
-
-        } else {
-            element.classList.add("modalActive");
-        }
-
-    }
-
     const orbitron = fonts[0];
 
     return (
 
-        <div className="skill-card" onClick={activeModal}>
+        <div className="skill-card" >
             <div className="skill">
+            
+                <div className="leftCovering"></div>
                 <h4 className={orbitron.className}> {skillName} </h4>
                 <SkillIcon color={skillColor} className="skillIcon" />
-            </div>
-
-            <div className={`skillDescription sD${number}`}>
-                <div>
-                    <p>{skillDescription}</p>
-                </div>
+                <p className={`skillDescription`}>{skillDescription}</p>
+           
+                <div className="rightCovering"></div>
             </div>
 
         </div>
