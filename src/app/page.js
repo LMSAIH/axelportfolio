@@ -5,6 +5,7 @@ import Introduction from "./components/Introduction";
 import Projects from "./components/Projects";
 import {Orbitron }from 'next/font/google';
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 
 const orbitron = Orbitron({
   subsets: ['latin'],
@@ -21,7 +22,7 @@ export default function Home() {
           <Introduction fonts={[orbitron]}/>
           <Projects fonts={[orbitron]}/>
           <Skills fonts={[orbitron]} />
-          <motion.div className="experience" id="experience"></motion.div>
+          <Experience fonts={[orbitron]} />
           <motion.div className="contact" id="contact"></motion.div>
         </div>
 
