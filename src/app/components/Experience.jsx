@@ -26,7 +26,7 @@ const Experience = ({ fonts }) => {
     }, []);
 
     return (
-        <motion.div className="experience" id="experience" initial={{ opacity: 0 }}
+        <motion.div className="experienceContainer" id="experience" initial={{ opacity: 0 }}
             animate={{ opacity: isVisible ? 1 : 0 }}
             transition={{ duration: 0.3 }}>
                 <h3 className={`experienceTitle ${orbitron.className}`}>
@@ -34,9 +34,9 @@ const Experience = ({ fonts }) => {
                 </h3>
                 <div className="experienceJobPositions">
               
-                   <JobPosition fonts ={orbitron} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
-                   <JobPosition fonts ={orbitron} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
-                   <JobPosition fonts ={orbitron} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
+                   <JobPosition key = {1} fonts ={[orbitron]} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
+                   <JobPosition key = {2} fonts ={[orbitron]} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
+                   <JobPosition key = {3} fonts ={[orbitron]} positionName={"Customer Service Representative"} duration={"January 2023 - September 2023"} responsibilities={"As a customer service representative, my role was to help the members get their shit right"} description={"My job was pretty bring and its only saving grace was the fact that I earned good money and barely even had calls, which was practically an infinite money glitch."}/>
                 </div>
                 <div className="experienceVolunteering"></div>
         </motion.div>
