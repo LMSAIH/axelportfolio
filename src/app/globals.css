@@ -258,10 +258,49 @@ main{
   @apply absolute top-0 bottom-0 left-0 right-0 w-full h-full bg-third z-0 ;
 }
 
-.experience{
+.experienceContainer{
   @apply bg-none w-full p-4 border-2 border-white rounded-md;
 }
 
+.jobPosition{
+  @apply w-11/12 border-2 border-white m-auto p-0 mt-5 rounded-md bg-backgroudSecondary;
+}
+
+.jobPositionTopContainer{
+  @apply flex flex-row justify-center mt-5 p-4; 
+}
+
+.jobPositionTopContainer>svg{
+  @apply text-white size-8 ml-6;
+}
+
+.jobPositionTopContainer>svg:hover{
+  @apply text-third duration-300 cursor-pointer;
+}
 .experienceTitle{
   @apply  ml-4 mr-4 bg-backgroudSecondary rounded-md text-white text-2xl text-center p-3;
+}
+
+.positionName{
+  @apply text-white text-center text-2xl;
+}
+
+.positionDuration{
+  @apply text-gray-300 text-center;
+}
+
+.positionResponsibilitiesTitle{
+  @apply text-white text-xl text-center mt-4;
+}
+
+.positionResponsibilities{
+  @apply text-white text-lg text-center mt-2;
+}
+
+.positionRoleDescriptionTitle{
+  @apply text-white text-xl text-center mt-4;
+}
+
+.positionRoleDescription{
+  @apply text-white text-lg text-center mt-2;
 }
