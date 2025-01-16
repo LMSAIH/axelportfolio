@@ -25,7 +25,7 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
       case "html":
         return (
           <div className={className}>
-            <Html5Icon  />
+            <Html5Icon />
           </div>
         );
       case "js":
@@ -36,8 +36,8 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
         );
       case "aws":
         return (
-          <div  className={className}>
-            <AmazonIcon  />
+          <div className={className}>
+            <AmazonIcon />
           </div>
         );
       default:
@@ -83,6 +83,8 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
     <motion.div className={`project project${number}`} initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.3 }}>
+      <div className="projectBallTop"></div>
+      <div className="projectBallBottom"></div>
       <div className="projectImageContainer" style={{
         filter: active ? "none" : "blur(5px)",
         backgroundColor: active ? "transparent" : "rgba(0, 0, 0, 0.5)",
@@ -99,7 +101,7 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
 
         <div className="techIconsContainer">
           {skills && Object.entries(skills).map(([key, value]) => (
-            <InjectIcons key={key} value={value} className = "projectTechIcon" />
+            <InjectIcons key={key} value={value} className="projectTechIcon" />
           ))}
         </div>
       </div>
