@@ -94,7 +94,9 @@ const Introduction = ({ fonts }) => {
 
     }, []);
 
-    const iconModifierComputer = 20; // Adjust this as needed
+    const iconModifierComputer = 20; 
+
+    //TODO: Change dimensions, instead of width, use tailwind styles
 
     return (
         <motion.div
