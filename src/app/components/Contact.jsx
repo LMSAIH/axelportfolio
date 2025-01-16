@@ -2,6 +2,7 @@ import { Mail01Icon } from "hugeicons-react";
 
 const Contact = ({fonts}) => {
 
+    //TODO: add form
     const orbitron = fonts[0];
     return ( 
         <div className="contact" id="contact">
