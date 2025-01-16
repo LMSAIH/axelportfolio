@@ -148,7 +148,7 @@ main{
 
 .projectsHeader{
   clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
-  @apply w-fit bg-backgroundFifth p-5 pr-8 mb-10 rounded-sm;
+  @apply w-fit bg-backgroundFifth p-5 pr-8 mb-20 rounded-sm;
 }
 
 .projectsHeader>h2{
@@ -160,26 +160,26 @@ main{
 }
 
 .project{
-  @apply w-full m-auto mb-20 flex flex-row  rounded-md bg-backgroundThird;
+  @apply w-full m-auto mb-32 flex flex-row  relative rounded-md bg-backgroundThird z-10 ;
 }
 .projectImageContainer{
   @apply m-0;
 }
 
 .projectContent{
-  @apply bg-backgroundThird w-full rounded-md m-0 p-2;
+  @apply bg-backgroundThird w-full ;
 }
 
 .projectTitle{
-  @apply text-third text-3xl text-center;
+  @apply text-third text-3xl text-center mt-5;
 }
 
 .projectContent{
-  @apply text-white text-lg text-center mt-5 mb-5 w-fit;
+  @apply text-white text-lg text-center  w-fit z-10; 
 }
 
 .projectDescription{
-  @apply p-5 w-fit;
+  @apply p-5 w-fit mb-5;
 }
 
 .projectDescription>p{
@@ -303,4 +303,36 @@ main{
 
 .positionRoleDescription{
   @apply text-white text-lg text-center mt-2;
+}
+
+.contact{
+  @apply  mt-10 mb-10 p-5;
+}
+
+.contactTitle{
+  @apply  text-center text-white text-2xl mb-10;
+}
+
+.socialsContainer{
+  @apply text-white justify-center flex flex-row;
+}
+
+.socialsContainer>svg{
+  @apply size-14;
+}
+
+.socialsContainer>svg:hover{
+  @apply text-third duration-300 cursor-pointer;
+}
+
+.copyright{
+  @apply text-xl text-center text-secondary mt-10 mb-10;
+}
+
+.projectBallTop{
+  @apply absolute -top-10 bottom-0 -left-10 right-0 w-1/3 h-40 bg-third -z-50 rounded-full;
+}
+
+.projectBallBottom {
+  @apply absolute -bottom-10 -right-10  w-1/2 h-40 bg-third -z-10 rounded;
 }
