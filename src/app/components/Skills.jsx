@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ReactIcon } from "hugeicons-react";
+import { ToolsIcon } from "hugeicons-react";
 import Skill from "./Skill";
 const Skills = ({ fonts }) => {
 
@@ -33,12 +34,15 @@ const Skills = ({ fonts }) => {
         <motion.div className="skills" id="skills" initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isVisible ? 1 : 0, y: -10 }}
             transition={{ duration: 0.3 }}>
+            <div className="skillsTopLeft">
+                <ToolsIcon />
+            </div>
             <h3 className={orbitron.className}> Every good builder has its trusty toolset, here's mine!  </h3>
 
             <div className="skillContainer">
-                <Skill number = {1} fonts = {[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
-                <Skill  number = {2} fonts = {[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
-                <Skill   number = {3} fonts = {[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
+                <Skill number={1} fonts={[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
+                <Skill number={2} fonts={[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
+                <Skill number={3} fonts={[orbitron]} SkillIcon={ReactIcon} skillColor={"#61dbfb"} skillName={"React"} skillDescription={"React is a JavaScript library for building user interfaces, primarily for single-page applications. It allows developers to create reusable UI components and efficiently update the view in response to data changes. It's widely used for building fast, interactive web applications."} />
             </div>
 
 
