@@ -163,7 +163,11 @@ main{
   @apply w-full m-auto mb-32 flex flex-row  relative rounded-md bg-backgroundThird z-10 ;
 }
 .projectImageContainer{
-  @apply m-0;
+  @apply m-auto w-auto h-full;
+}
+
+.projectImageContainer>video{
+  @apply w-full h-full;
 }
 
 .projectContent{
@@ -210,7 +214,17 @@ main{
 }
 
 .skills{
-  @apply pt-10 pb-10 mt-10 mb-10  border-white border-solid w-full h-fit border-2 rounded-sm pl-3 pr-3;
+  @apply pt-10 pb-10 mt-48 mb-24  border-white border-solid w-full h-fit border-2 rounded-sm pl-3 pr-3 z-10;
+}
+
+.skillsTopLeft{
+  /* Aligned to the center as the width should always remain 1/6 */
+  left: 41.6%;
+  @apply absolute -top-20  bottom-0 right-0 w-1/6 h-24 bg-third rounded-md -z-10 flex flex-row justify-center border-2 border-white;
+}
+
+.skillsTopLeft>svg{
+  @apply size-full m-auto text-black;
 }
 
 .skills>h3{
@@ -227,9 +241,10 @@ main{
 }
 
 .skill {
-  @apply w-full bg-backgroundFourth rounded-xl p-10 relative overflow-hidden;
+  @apply w-full bg-backgroundFourth rounded-xl p-10 relative overflow-hidden ;
   transition: transform 0.6s;
 }
+
 
 .skill:hover {
   @apply opacity-70 duration-300 cursor-pointer;
@@ -259,7 +274,16 @@ main{
 }
 
 .experienceContainer{
-  @apply bg-none w-full p-4 border-2 border-white rounded-md;
+  @apply bg-none w-full p-4 border-2 border-white rounded-md relative;
+}
+
+.experienceTop{
+  left: 41.6%;
+  @apply absolute -top-20  bottom-0 right-0 w-1/6 h-24 bg-third rounded-md  flex flex-row justify-center border-2 border-white;
+}
+
+.experienceTop>svg{
+  @apply text-black size-full;
 }
 
 .jobPosition{
@@ -278,7 +302,7 @@ main{
   @apply text-third duration-300 cursor-pointer;
 }
 .experienceTitle{
-  @apply  ml-4 mr-4 bg-backgroudSecondary rounded-md text-white text-2xl text-center p-3;
+  @apply  ml-4 mr-4 mt-8 bg-backgroudSecondary rounded-md text-white text-2xl text-center p-3;
 }
 
 .positionName{
