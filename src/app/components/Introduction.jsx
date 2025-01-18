@@ -21,7 +21,6 @@ const velocity = 80;
 const Introduction = ({ fonts }) => {
 
     const orbitron = fonts[0];
-    const { width, height } = useWindowSize();
     const constraintsRef = useRef(null);
     const dragControls = useDragControls();
 
@@ -42,61 +41,77 @@ const Introduction = ({ fonts }) => {
     // modify it to account for the xScroll, I wish you the best, and please, spread this knowledge if you can. 
     useEffect(() => {
 
-        for (let i = 0; i < iconsRefArray.length; i++) {
-
-            const container = constraintsRef.current;
-            const iconContainer = iconsRefArray[i].current;
-
-            if ((!container || !iconContainer)) return;
-            let y = 0;
-            let x = 0;
-            let yVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
-            let xVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
-
-            function move() {
 
 
-                // Check for collisions with the container boundaries
-                const containerRect = container.getBoundingClientRect();
-                const iconRect = iconContainer.getBoundingClientRect();
+        function startAnimation() {
+            for (let i = 0; i < iconsRefArray.length; i++) {
 
-                const adjustedYStart = containerRect.y;
-                const adjustedYLimit = containerRect.y + window.scrollY + containerRect.height;
-                const adjustedIconLimit = iconRect.y + window.scrollY + iconRect.height;
+                const container = constraintsRef.current;
+                const iconContainer = iconsRefArray[i].current;
+
+                if ((!container || !iconContainer)) return;
+                let y = 0;
+                let x = 0;
+                let yVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
+                let xVelocity = (Math.random() * 20) * (Math.random() > 0.5 ? 1 : -1);
+
+                function move() {
 
 
-                if (adjustedYLimit == adjustedIconLimit) {
-                    x = 0;
-                    y = 0;
+                    // Check for collisions with the container boundaries
+                    const containerRect = container.getBoundingClientRect();
+                    const iconRect = iconContainer.getBoundingClientRect();
+
+                    const adjustedYStart = containerRect.y;
+                    const adjustedYLimit = containerRect.y + window.scrollY + containerRect.height;
+                    const adjustedIconLimit = iconRect.y + window.scrollY + iconRect.height;
+
+
+                    if (adjustedYLimit == adjustedIconLimit) {
+                        x = 0;
+                        y = 0;
+                    }
+
+                    if (adjustedIconLimit > adjustedYLimit || iconRect.y < adjustedYStart) {
+                        yVelocity *= -1;
+                    }
+
+                    if (iconRect.x < containerRect.x || iconRect.x + iconRect.width > containerRect.x + containerRect.width) {
+                        xVelocity *= -1;
+                    }
+
+                    y += yVelocity;
+                    x += xVelocity;
+
+                    iconContainer.style.transform = `translate(${x}px, ${y}px)`;
+
+
+                    requestAnimationFrame(move);
+
+
                 }
 
-                if (adjustedIconLimit > adjustedYLimit || iconRect.y < adjustedYStart) {
-                    yVelocity *= -1;
-                }
-
-                if (iconRect.x < containerRect.x || iconRect.x + iconRect.width > containerRect.x + containerRect.width) {
-                    xVelocity *= -1;
-                }
-
-                y += yVelocity;
-                x += xVelocity;
-
-                iconContainer.style.transform = `translate(${x}px, ${y}px)`;
-
-
-                requestAnimationFrame(move);
-
-
+                move();
             }
-
-            move();
         }
 
+
+        const onLoad = () => {
+            startAnimation();
+        };
+
+        if (document.readyState === 'complete') {
+            onLoad(); 
+        } else {
+            window.addEventListener('load', onLoad); 
+        }
+
+        return () => {
+            window.removeEventListener('load', onLoad); 
+        };
+        
     }, []);
 
-    const iconModifierComputer = 20; 
-
-    //TODO: Change dimensions, instead of width, use tailwind styles
 
     return (
         <motion.div
@@ -118,11 +133,11 @@ const Introduction = ({ fonts }) => {
                     dragControls={dragControls}
                     style={{ cursor: "grab" }}
                 >
-                    <Image src="/mainScreenPicture.svg" width={width / 2} height={width / 2} alt="Coder picture" unoptimized />
+                    <Image src="/mainScreenPicture.svg" width="100" height="100" alt="Coder picture" unoptimized />
                 </motion.div>
                 <div className={`dragMe ${orbitron.className}`}>
                     <p> Drag me!</p>
-                    <ArrowMoveDownLeftIcon size={width / 10} color={primary} className="introductionArrow" />
+                    <ArrowMoveDownLeftIcon color={primary} className="introductionArrow" />
                 </div>
             </div>
 
@@ -133,33 +148,33 @@ const Introduction = ({ fonts }) => {
                     ref={gitIconRef}
 
                 >
-                    <Github01Icon size={width / iconModifierComputer} color={"white"} />
+                    <Github01Icon color={"white"} />
                 </motion.div>
                 <motion.div className="individualIcon"
 
                     ref={npmIconRef}
                 >
-                    <NpmIcon size={width / iconModifierComputer} color={"red"} />
+                    <NpmIcon color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
 
                     ref={reactIconRef}>
-                    <ReactIcon size={width / iconModifierComputer} color={"#61dbfb"} />
+                    <ReactIcon color={"#61dbfb"} />
                 </motion.div>
                 <motion.div className="individualIcon"
 
                     ref={cppIconRef}>
-                    <CIcon size={width / iconModifierComputer} color={"#015482"} />
+                    <CIcon color={"#015482"} />
                 </motion.div>
                 <motion.div className="individualIcon"
 
                     ref={javaIconRef}>
-                    <JavaIcon size={width / iconModifierComputer} color={"red"} />
+                    <JavaIcon color={"red"} />
                 </motion.div>
                 <motion.div className="individualIcon"
 
                     ref={javaScriptIconRef}>
-                    <JavaScriptIcon size={width / iconModifierComputer} color={"yellow"} />
+                    <JavaScriptIcon color={"yellow"} />
                 </motion.div>
             </motion.div>
             <WhoAmI className={orbitron.className} />
