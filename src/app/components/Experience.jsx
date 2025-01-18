@@ -34,7 +34,7 @@ const Experience = ({ fonts }) => {
                     What have I worked on? 
                 </h3>
                 <div className="experienceTop">
-                    <WorkHistoryIcon />
+                    <WorkHistoryIcon  />
                 </div>
                 <div className="experienceJobPositions">
               
