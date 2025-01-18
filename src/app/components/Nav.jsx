@@ -26,6 +26,10 @@ const NavBar = () => {
                 <Dots name={"Contact me!"} targetRef={"contact"}/>
 
             </div>
+
+            <div className="hamb">
+
+            </div>
         </nav>
 
     );
