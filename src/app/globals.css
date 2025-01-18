@@ -2,34 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-body {
-  @apply bg-backgroundPrimary w-full h-full pl-10 pt-10 pb-10 pr-0 overflow-x-hidden;
+html{
+  @apply w-screen h-screen;
 }
 
+body {
+  @apply bg-backgroundPrimary w-full h-full lg:pl-10 lg:pt-10 pl-2 pt-2 pb-10 lg:pr-0 pr-2 overflow-x-hidden;
+}
+
+
 .content {
-  @apply w-full h-full flex flex-row;
+  @apply w-full h-full flex flex-row gap-0 relative;
 }
 
 nav {
-  @apply order-2 w-1/6 fixed right-0 top-0 flex justify-center h-screen;
+  @apply order-2  w-1/6 fixed top-0 right-0 flex justify-center h-screen z-50;
 }
 
-main{
-
-  @apply order-1 w-5/6;
-}
-
-.left{
-  @apply w-full h-full;
-}
 .navbar {
-  @apply w-full flex justify-center flex-col mr-0;
+  @apply w-full flex justify-center flex-col ;
 }
 
 .navbar .linkContainer {
   @apply flex justify-center flex-col;
+}
+
+main{
+  @apply order-1 lg:w-5/6 w-full;
+}
+
+.left{
+  @apply w-full h-full;
 }
 
 .clickableContainer{
@@ -37,7 +40,7 @@ main{
 }
 
 .clickableContainer>div {
-  @apply  w-fit;
+  @apply w-fit;
 }
 
 .dotContainer {
@@ -45,12 +48,12 @@ main{
 }
 
 .navbar .dot {
-  @apply w-8 h-8 rounded-full mt-1 m-0 border-solid border-2;
+  @apply xl:w-8 xl:h-8 rounded-full mt-1 m-0 border-solid border-2 w-5 h-5;
 }
 
 .connectorContainer
 {
-  @apply w-full min-h-14 mt-1 flex justify-center m-0;
+  @apply w-full h-10 mt-1 flex justify-center m-0;
 }
 
 .connector
@@ -60,23 +63,23 @@ main{
 
 .experience
 {
-  @apply text-white font-extralight text-base;
+  @apply text-white font-extralight lg:text-base text-xs;
 }
 
 .content{
-  @apply w-full h-lvh;
+  @apply w-full h-lvh ;
 }
 
 .introduction{
-  @apply bg-backgroudSecondary rounded-sm mb-20;
+  @apply bg-backgroudSecondary rounded-sm mb-20 w-full p-1;
 }
 
 .nameContainer{
-  @apply w-full flex justify-center;
+  @apply lg:w-full w-3/4 flex m-auto justify-center;
 }
 
 .nameContainer>h1{
-  @apply w-fit p-4 text-white text-4xl mt-10 mb-10 text-center rounded-none shadow-[1.25rem_1.25rem_0_#101010,-1.25rem_-1.25rem_0_#404040] ;
+  @apply w-fit lg:p-4 p-0.5 text-white lg:text-2xl lg:text-4xl text-xl mt-10 mb-10 text-center rounded-none lg:shadow-[1rem_1rem_0_#101010,-1rem_-1rem_0_#404040] shadow-[0.8rem_0.8rem_0_#101010,-0.8rem_-0.8rem_0_#404040] ;
 }
 
 .middleContainer{
@@ -84,27 +87,40 @@ main{
 }
 
 .dragMe{
-  @apply w-fit mr-auto mt-20 mb-auto ml-0;
+  @apply w-fit mr-auto lg:mt-20 mt-0 mb-auto ml-0;
 }
 
 .dragMe>p{
   text-shadow: black 1px 1px 1px;
-  @apply w-fit text-center text-5xl text-third;
+  @apply w-fit text-center xl:text-5xl lg:text-3xl  lg:text-2xl text-lg text-third;
 }
+
 .mainImgContainer{
-  @apply w-fit m-auto  mt-4 bg-none;
+  @apply lg:w-fit w-full h-full m-auto  mt-4 bg-none;
+}
+
+.mainImgContainer>img{
+  @apply w-full h-full;
 }
 
 .mainImgContainer:hover{
   @apply bg-backgroundFourth shadow-[1.25rem_1.25rem_0_#000000,-1.25rem_-1.25rem_0_#404040] rotate-2;
 }
 
+.introductionArrow{
+  @apply xl:size-40 lg:size-32 size-10;
+}
+
+.individualIcon>svg{
+  @apply lg:size-20 size-8;
+}
+
 .iconContainer{
-  @apply flex flex-row m-auto mt-0 mb-0 w-fit p-5 gap-8 z-10 ;
+  @apply flex flex-row m-auto mt-0 mb-0 w-fit p-0 gap-8 z-10 flex-wrap ;
 }
 
 .secondParagraph{
-  @apply block mt-5;
+  @apply block lg:mt-4 mt-0;
 }
 
 .authorName{
@@ -121,11 +137,11 @@ main{
 }
 
 .whoAmI{
-  @apply w-8/12 m-auto p-5;
+  @apply lg:w-8/12 w-full mt-0 lg:m-auto  p-2;
 }
 
 .whoAmIContent>p{
-  @apply text-white text-xl  ;
+  @apply text-white lg:text-xl text-sm ;
 }
 
 .whoAmIColored{
@@ -134,11 +150,17 @@ main{
 
 .whoAmIContent{
   
-  @apply p-7 mb-12 mt-0 bg-backgroundThird rounded-md flex flex-row w-full;
+  @apply lg:p-8 p-5 mb-5 mt-0 bg-backgroundThird rounded-md flex flex-row w-full relative;
 }
 
 .eurekaIcon{
-  @apply size-1/3 m-auto pr-4;
+  @apply lg:size-1/3 lg:m-auto lg:pr-4 lg:relative lg:top-0 lg:left-0 absolute -top-1/4 size-1/4;
+}
+
+@media (max-width:640px) {
+  .eurekaIcon{
+    left: 37.5%;
+  }
 }
 
 .projects{
@@ -148,11 +170,11 @@ main{
 
 .projectsHeader{
   clip-path: polygon(0 0, 100% 0, 96% 100%, 0% 100%);
-  @apply w-fit bg-backgroundFifth p-5 pr-8 mb-20 rounded-sm;
+  @apply w-fit bg-backgroundFifth lg:p-5 lg:pr-8 p-2 pr-4 mb-20 rounded-sm;
 }
 
 .projectsHeader>h2{
-  @apply w-full text-2xl;
+  @apply w-full lg:text-2xl text-lg;
 }
 
 .projectsHeader>h2>span{
@@ -160,22 +182,23 @@ main{
 }
 
 .project{
-  @apply w-full m-auto mb-32 flex flex-row  relative rounded-md bg-backgroundThird z-10 ;
+  @apply w-full m-auto mb-32 flex lg:flex-row flex-col  lg:pb-0  relative lg:rounded-md rounded-lg bg-backgroundThird z-10 ;
 }
+
 .projectImageContainer{
-  @apply m-auto w-auto h-full;
+  @apply m-auto w-auto h-full rounded-lg;
 }
 
 .projectImageContainer>video{
-  @apply w-full h-full;
+  @apply w-full h-full rounded-lg;
 }
 
 .projectContent{
-  @apply bg-backgroundThird w-full ;
+  @apply bg-backgroundThird w-full rounded-lg;
 }
 
 .projectTitle{
-  @apply text-third text-3xl text-center mt-5;
+  @apply text-third lg:text-2xl lg:text-3xl text-xl text-center mt-5;
 }
 
 .projectContent{
@@ -183,11 +206,11 @@ main{
 }
 
 .projectDescription{
-  @apply p-5 w-fit mb-5;
+  @apply lg:p-5 p-4 w-fit mb-5;
 }
 
 .projectDescription>p{
-  @apply text-xl;
+  @apply lg:text-xl text-sm;
 }
 
 .projectDescription>p>a{
@@ -203,18 +226,19 @@ main{
 }
 
 .techIconsContainer{
-  @apply flex flex-row justify-center gap-10 w-full mt-auto mb-auto;
+  @apply flex flex-row justify-center gap-10 w-full mt-auto mb-auto lg:pb-0 lg:rounded-none pb-5 rounded-full;
 }
 
 .projectTechIcon>svg{
-  @apply size-12 ;
+  @apply lg:size-12 size-8 ;
 }
+
 .projectTechIcon>svg:hover{
   @apply rotate-6 fill-blue-400;
 }
 
 .skills{
-  @apply pt-10 pb-10 mt-48 mb-24  border-white border-solid w-full h-fit border-2 rounded-sm pl-3 pr-3 z-10;
+  @apply pt-10 pb-10 mt-48 mb-24  border-white border-solid w-full h-fit border-2 rounded-sm lg:pl-3 lg:pr-3 pr-1 pl-1 z-10;
 }
 
 .skillsTopLeft{
@@ -229,7 +253,7 @@ main{
 
 .skills>h3{
   
-  @apply  shadow-white text-2xl text-center text-white bg-backgroundFourth   w-full pt-4 pb-4 rounded-md ;
+  @apply  shadow-white lg:text-2xl text-lg text-center text-white bg-backgroundFourth   w-full pt-4 pb-4 rounded-md ;
 }
 
 .skillContainer{
@@ -237,7 +261,7 @@ main{
 }
 
 .skill-card {
- @apply w-3/12 ;
+ @apply w-full m-3;
 }
 
 .skill {
@@ -302,7 +326,7 @@ main{
   @apply text-third duration-300 cursor-pointer;
 }
 .experienceTitle{
-  @apply  ml-4 mr-4 mt-8 bg-backgroudSecondary rounded-md text-white text-2xl text-center p-3;
+  @apply  ml-4 mr-4 mt-8 bg-backgroudSecondary rounded-md text-white lg:text-2xl text-xl text-center p-1 lg:p-3;
 }
 
 .positionName{
@@ -354,9 +378,9 @@ main{
 }
 
 .projectBallTop{
-  @apply absolute -top-10 bottom-0 -left-10 right-0 w-1/3 h-40 bg-third -z-50 rounded-full;
+  @apply absolute -top-10 bottom-0 lg:-left-10  lg:w-1/3  lg:h-40  bg-third -z-50 rounded-full;
 }
 
 .projectBallBottom {
-  @apply absolute -bottom-10 -right-10  w-1/2 h-40 bg-third -z-10 rounded;
+  @apply absolute lg:-bottom-10 lg:-right-10    lg:w-1/3  lg:h-40  bg-third -z-50 lg:rounded-none rounded-full;
 }
