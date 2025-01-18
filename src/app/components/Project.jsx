@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import useWindowSize from "../hooks/useWindowSize";
 import HtmlInjector from "../injectors/HtmlInjector";
 import { Html5Icon } from "hugeicons-react";
 import { JavaScriptIcon } from "hugeicons-react";
@@ -11,7 +10,7 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
   const videoRef = useRef(null);
   const orbitron = fonts[0];
 
-  const { width, height } = useWindowSize();
+
 
   const handlePlay = () => {
     if (videoRef.current) {
@@ -90,7 +89,7 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
         backgroundColor: active ? "transparent" : "rgba(0, 0, 0, 0.5)",
         transition: "filter 0.15s ease, background-color 0.15s ease",
       }}>
-        <video width={width / 2.5} loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
+        <video  loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
           <source src={source} type="video/mp4" />
           Your browser does not support the video tag, please try in a different browser.
         </video>
