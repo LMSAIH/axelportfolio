@@ -1,9 +1,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import HtmlInjector from "../injectors/HtmlInjector";
-import { Html5Icon } from "hugeicons-react";
-import { JavaScriptIcon } from "hugeicons-react";
-import { AmazonIcon } from "hugeicons-react";
+
 
 const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) => {
 
@@ -18,40 +16,6 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
       setIsActive(true);
     }
   };
-
-  const InjectIcons = ({ value, className }) => {
-    switch (value) {
-      case "html":
-        return (
-          <div className={className}>
-            <Html5Icon />
-          </div>
-        );
-      case "js":
-        return (
-          <div className={className}>
-            <JavaScriptIcon />
-          </div>
-        );
-      case "aws":
-        return (
-          <div className={className}>
-            <AmazonIcon />
-          </div>
-        );
-      default:
-        return null;
-    }
-  };
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch((err) => {
-        console.warn("Autoplay failed. User interaction is required.", err);
-      });
-    }
-  }, []);
 
   const [active, setIsActive] = useState(false);
 
@@ -89,7 +53,7 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
         backgroundColor: active ? "transparent" : "rgba(0, 0, 0, 0.5)",
         transition: "filter 0.15s ease, background-color 0.15s ease",
       }}>
-        <video  loop preload="auto" onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
+        <video muted preload="auto" playsInline loop onMouseEnter={handlePlay} onClick={handlePlay} ref={videoRef}>
           <source src={source} type="video/mp4" />
           Your browser does not support the video tag, please try in a different browser.
         </video>
@@ -99,9 +63,12 @@ const Project = ({ fonts, source, number, projectTitle, htmlContent, skills }) =
         <HtmlInjector htmlContent={htmlContent} className={"projectDescription"} />
 
         <div className="techIconsContainer">
-          {skills && Object.entries(skills).map(([key, value]) => (
-            <InjectIcons key={key} value={value} className="projectTechIcon" />
-          ))}
+          {skills &&
+            skills.map((Icon, index) => (
+              <div key={index} className={`projectTechIcon`}>
+                {<Icon />}
+              </div>
+            ))}
         </div>
       </div>
     </motion.div>
