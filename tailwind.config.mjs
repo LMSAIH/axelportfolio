@@ -20,9 +20,7 @@ export default {
         backgroundFifth: "#8b8b8b",
       },
     },
-    animation: {
-      "spin-slow": "spin 5s linear infinite",
-    },
+    
   },
   plugins: [],
 };
