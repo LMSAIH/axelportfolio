@@ -6,7 +6,7 @@ import { Orbitron } from "next/font/google";
 import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import Contact from "./components/Contact";
-import Head from 'next/head';
+
 
 const orbitron = Orbitron({
   subsets: ["latin"],
