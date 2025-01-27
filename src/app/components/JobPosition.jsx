@@ -8,6 +8,7 @@ const JobPosition = ({ positionName, responsibilities, company, description, dur
     const orbitron = fonts[0];
 
     return (
+        //todo: add job for LFC
         <div className="jobPosition">
 
             <div className="jobPositionTopContainer">
